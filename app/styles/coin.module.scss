@@ -1,0 +1,71 @@
+.coinContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+$coin-size: 2em;
+.coin{
+	background: #FFDE00;
+	width: $coin-size;
+	height: $coin-size;
+	border-radius: 50%;
+	position: relative;
+    -webkit-transform-style: preserve-3d;
+	animation: spin 2s linear infinite;
+	
+	@keyframes spin{
+		0%{
+			transform: rotateY(0deg);
+		}
+		100%{
+			transform: rotateY(360deg);
+		}
+	}
+	
+	&:before{
+		background-color: #FF9900;
+		position: absolute;
+		border-radius: 50%;
+		content: '';
+		height: $coin-size;
+		width: $coin-size;
+        left: 0.15em;
+		-webkit-transform: translateZ(-0.15em);
+	}
+	
+	&:after{
+		background-color: #FF9900;
+		content: '';
+		left: calc($coin-size / 2.5);
+		position: absolute;
+		height: $coin-size;
+		width: calc($coin-size /11);
+		z-index: -10;
+		-webkit-transform: rotateY(-90deg);
+		-webkit-transform-origin: 100% 50%;
+	}
+}
+
+.tails{
+	background-color: #FF9900;
+	position: absolute;
+	border-radius: 50%;
+	content: '';
+	height: $coin-size;
+	width: $coin-size;
+	-webkit-transform: translateZ(-0.0005em);
+	border: 1px solid #FF9900;
+}
+
+.heads{
+	background-color: #FFDE00;
+	position: absolute;
+	border-radius: 50%;
+	content: '';
+	height: $coin-size;
+	width: $coin-size;
+	-webkit-transform: translateZ(-0.2em);
+	border: 1px solid #FF9900;
+}
